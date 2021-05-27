@@ -18,10 +18,11 @@ class Pomodoro:
     """pomodoro session class"""
     def __init__(self, counter=POMODORO_LENGTH):
         self.counter = counter
+        self.name = "Pomodoro"
 
     def run(self):
         """run()"""
-        print("Pomodoro")
+        print(self.name)
         while self.counter > 0:
             minutes = int(self.counter / 60)
             seconds = self.counter - minutes * 60
