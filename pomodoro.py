@@ -10,6 +10,7 @@ $ pomodoro.py l  # start a long break timer
 
 """
 
+import datetime
 import sys
 import time
 
@@ -28,13 +29,17 @@ class Session:
 
     def run(self):
         """run()"""
-        print(self.name)
+        now = datetime.datetime.now()
+        print("Today is: {}".format(now.strftime("%Y-%m-%d")))
+        print("{} started at {}".format(self.name, now.strftime("%H:%M:%S")))
         while self.counter > 0:
             minutes = int(self.counter / 60)
             seconds = self.counter - minutes * 60
             print("   {:02d}:{:02d}".format(minutes, seconds), end="\r")
             time.sleep(1)
             self.counter -= 1
+        now = datetime.datetime.now()
+        print("{} finished at {}".format(self.name, now.strftime("%H:%M:%S")))
 
 
 class Pomodoro(Session):
