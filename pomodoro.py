@@ -15,11 +15,12 @@ import time
 POMODORO_LENGTH = 25 * 60  # pomodoro length in seconds
 
 
-class Pomodoro:
-    """pomodoro session class"""
-    def __init__(self, counter=POMODORO_LENGTH):
+class Session:
+    """superclass for sessions"""
+
+    def __init__(self, counter=60):
         self.counter = counter
-        self.name = "Pomodoro"
+        self.name = "Session"
 
     def run(self):
         """run()"""
@@ -30,6 +31,13 @@ class Pomodoro:
             print("   {:02d}:{:02d}".format(minutes, seconds), end="\r")
             time.sleep(1)
             self.counter -= 1
+
+
+class Pomodoro(Session):
+    """pomodoro session class"""
+    def __init__(self, counter=POMODORO_LENGTH):
+        self.counter = counter
+        self.name = "Pomodoro"
 
 
 def main():
