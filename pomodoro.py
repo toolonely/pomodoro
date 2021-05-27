@@ -16,6 +16,7 @@ POMODORO_LENGTH = 25 * 60  # pomodoro length in seconds
 
 def main():
     """main"""
+    print("Pomodoro")
     counter = POMODORO_LENGTH
     while counter > 0:
         minutes = int(counter / 60)
