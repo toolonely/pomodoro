@@ -34,7 +34,9 @@ class Pomodoro:
 
 def main():
     """main"""
-    if len(sys.argv) == 2:
+    if len(sys.argv) == 1:
+        print(__doc__)
+    elif len(sys.argv) == 2:
         cmd = sys.argv[1]
         if cmd == "p":
             pomodoro = Pomodoro()
