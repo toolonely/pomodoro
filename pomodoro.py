@@ -18,7 +18,9 @@ def main():
     """main"""
     counter = POMODORO_LENGTH
     while counter > 0:
-        print(counter)
+        minutes = int(counter / 60)
+        seconds = counter - minutes * 60
+        print("{:02d}:{:02d}".format(minutes, seconds))
         time.sleep(1)
         counter -= 1
 
