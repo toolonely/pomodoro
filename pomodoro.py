@@ -16,16 +16,18 @@ POMODORO_LENGTH = 25 * 60  # pomodoro length in seconds
 
 class Pomodoro:
     """pomodoro session class"""
+    def __init__(self):
+        self.counter = POMODORO_LENGTH
+
     def run(self):
         """run()"""
         print("Pomodoro")
-        counter = POMODORO_LENGTH
-        while counter > 0:
-            minutes = int(counter / 60)
-            seconds = counter - minutes * 60
+        while self.counter > 0:
+            minutes = int(self.counter / 60)
+            seconds = self.counter - minutes * 60
             print("   {:02d}:{:02d}".format(minutes, seconds), end="\r")
             time.sleep(1)
-            counter -= 1
+            self.counter -= 1
 
 
 def main():
