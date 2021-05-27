@@ -4,10 +4,11 @@
 
 Usage examples:
 
-$ pomodoro.py  # start a pomodoro timer
+$ pomodoro.py p  # start a pomodoro timer
 
 """
 
+import sys
 import time
 
 
@@ -33,8 +34,11 @@ class Pomodoro:
 
 def main():
     """main"""
-    pomodoro = Pomodoro()
-    pomodoro.run()
+    if len(sys.argv) == 2:
+        cmd = sys.argv[1]
+        if cmd == "p":
+            pomodoro = Pomodoro()
+            pomodoro.run()
 
 
 if __name__ == "__main__":
