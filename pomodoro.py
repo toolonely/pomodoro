@@ -6,6 +6,7 @@ Usage examples:
 
 $ pomodoro.py p  # start a pomodoro timer
 $ pomodoro.py s  # start a short break timer
+$ pomodoro.py l  # start a long break timer
 
 """
 
@@ -15,6 +16,7 @@ import time
 
 POMODORO_LENGTH = 25 * 60  # pomodoro length in seconds
 SHORT_BREAK_LENGTH = 5 * 60  # short break length in seconds
+LONG_BREAK_LENGTH = 15 * 60  # long break length in seconds
 
 
 class Session:
@@ -49,6 +51,13 @@ class ShortBreak(Session):
         self.name = "Short break"
 
 
+class LongBreak(Session):
+    """long break session class"""
+    def __init__(self, counter=LONG_BREAK_LENGTH):
+        self.counter = counter
+        self.name = "Long break"
+
+
 def main():
     """main"""
     if len(sys.argv) == 1:
@@ -59,6 +68,8 @@ def main():
             session = Pomodoro()
         elif cmd == "s":
             session = ShortBreak()
+        elif cmd == "l":
+            session = LongBreak()
         session.run()
 
 
