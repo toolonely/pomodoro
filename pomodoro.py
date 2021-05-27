@@ -16,8 +16,8 @@ POMODORO_LENGTH = 25 * 60  # pomodoro length in seconds
 
 class Pomodoro:
     """pomodoro session class"""
-    def __init__(self):
-        self.counter = POMODORO_LENGTH
+    def __init__(self, counter=POMODORO_LENGTH):
+        self.counter = counter
 
     def run(self):
         """run()"""
