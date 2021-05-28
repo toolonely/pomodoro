@@ -30,8 +30,10 @@ class Session:
     def run(self):
         """run()"""
         now = datetime.datetime.now()
-        print("Today is: {}".format(now.strftime("%Y-%m-%d")))
-        print("{} started at {}".format(self.name, now.strftime("%H:%M:%S")))
+        today = now.strftime("%Y-%m-%d")
+        print("Today is: {}".format(today))
+        start_time = now.strftime("%H:%M:%S")
+        print("{} started at {}".format(self.name, start_time))
         while self.counter > 0:
             minutes = int(self.counter / 60)
             seconds = self.counter - minutes * 60
@@ -39,7 +41,8 @@ class Session:
             time.sleep(1)
             self.counter -= 1
         now = datetime.datetime.now()
-        print("{} finished at {}".format(self.name, now.strftime("%H:%M:%S")))
+        end_time = now.strftime("%H:%M:%S")
+        print("{} finished at {}".format(self.name, end_time))
 
 
 class Pomodoro(Session):
