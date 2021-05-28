@@ -11,6 +11,7 @@ $ pomodoro.py l  # start a long break timer
 """
 
 import datetime
+import os
 import sys
 import time
 
@@ -18,6 +19,8 @@ import time
 POMODORO_LENGTH = 25 * 60  # pomodoro length in seconds
 SHORT_BREAK_LENGTH = 5 * 60  # short break length in seconds
 LONG_BREAK_LENGTH = 15 * 60  # long break length in seconds
+
+DATA_DIR = os.path.expanduser("~/.local/share/pomodoro")
 
 
 class Session:
@@ -68,6 +71,8 @@ class LongBreak(Session):
 
 def main():
     """main"""
+    if not os.path.isdir(DATA_DIR):
+        os.mkdir(DATA_DIR)
     if len(sys.argv) == 1:
         print(__doc__)
     elif len(sys.argv) == 2:
