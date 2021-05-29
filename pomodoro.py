@@ -8,6 +8,7 @@ $ pomodoro.py    # show help
 $ pomodoro.py p  # start a pomodoro timer
 $ pomodoro.py s  # start a short break timer
 $ pomodoro.py l  # start a long break timer
+$ pomodoro.py t  # show timeline for today
 
 """
 
@@ -84,6 +85,30 @@ class LongBreak(Session):
         self.name = "Long break"
 
 
+def timeline():
+    """display timeline for today"""
+    now = datetime.datetime.now()
+    today = now.strftime("%Y-%m-%d")
+    try:
+        with open(os.path.join(DATA_DIR, today)) as f:
+            sessions = json.loads(f.read())
+    except FileNotFoundError:
+        sessions = []
+    chars = []
+    for session in sessions:
+        if session["type"] == "Pomodoro":
+            char = "O"
+        elif session["type"] == "Short break":
+            char = "."
+        elif session["type"] == "Long break":
+            char = "X"
+        chars.append(char)
+    if len(chars) == 0:
+        print("session is empty")
+    else:
+        print("".join(chars))
+
+
 def main():
     """main"""
     if not os.path.isdir(DATA_DIR):
@@ -92,6 +117,9 @@ def main():
         print(__doc__)
     elif len(sys.argv) == 2:
         cmd = sys.argv[1]
+        if cmd == "t":
+            timeline()
+            sys.exit()
         if cmd == "p":
             session = Pomodoro()
         elif cmd == "s":
