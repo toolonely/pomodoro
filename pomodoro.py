@@ -4,6 +4,7 @@
 
 Usage examples:
 
+$ pomodoro.py    # show help
 $ pomodoro.py p  # start a pomodoro timer
 $ pomodoro.py s  # start a short break timer
 $ pomodoro.py l  # start a long break timer
