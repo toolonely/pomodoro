@@ -11,6 +11,7 @@ $ pomodoro.py l  # start a long break timer
 """
 
 import datetime
+import json
 import os
 import sys
 import time
@@ -46,6 +47,19 @@ class Session:
         now = datetime.datetime.now()
         end_time = now.strftime("%H:%M:%S")
         print("{} finished at {}".format(self.name, end_time))
+        try:
+            with open(os.path.join(DATA_DIR, today)) as f:
+                sessions = json.loads(f.read())
+        except FileNotFoundError:
+            sessions = []
+        session = {
+            "type": self.name,
+            "start": start_time,
+            "end": end_time
+        }
+        sessions.append(session)
+        with open(os.path.join(DATA_DIR, today), "w") as f:
+            f.write(json.dumps(sessions))
 
 
 class Pomodoro(Session):
