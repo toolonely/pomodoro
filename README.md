@@ -7,3 +7,4 @@ Pomodoro in a nutshell:
 - the process consists of big iterations with big **15-30** minute breaks between them
 - an iteration consists of **4** pomodoros (**25** minutes) with short breaks between them (**5** minutes)
 
+Usage examples are in the module docstring.
